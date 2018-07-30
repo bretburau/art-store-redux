@@ -1,3 +1,6 @@
 class PiecesController < ApplicationController
-    attributes :id, :name
+    def index
+        @posts = Piece.all
+        render json: @posts
+    end
 end
