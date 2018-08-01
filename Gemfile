@@ -45,3 +45,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'foreman', '~> 0.82.0'
 gem 'active_model_serializers'
+gem 'rack-cors', require: 'rack/cors'
