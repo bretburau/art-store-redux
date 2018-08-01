@@ -7,13 +7,13 @@ import { bindActionCreators } from 'redux'
 export class App extends Component {
 
   componentDidMount() {
-    debugger;
+    this.props.actions.fetchPieces();
   }
 
   render() {
     return (
       <div className="App">
-       hi
+       {console.log(this.props)}
       </div>
     );
   }
@@ -24,9 +24,7 @@ const mapDispatchToProps = dispatch => ({
   // return {updatePieces: () => dispatch(fetchPieces())}
 })
 
-const mapStateToProps = state => ({
-  // pieces: this.state.pieces
-})
+const mapStateToProps = state => ({pieces: state.pieces})
 
 // export default App;
 export const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
