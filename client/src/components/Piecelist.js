@@ -1,5 +1,14 @@
 import React from 'react';
 
-export default class PiecList extends React.Component {
-
+export default class PieceList extends React.Component {
+    
+    render() {
+        console.log(this.props)
+        return(
+            <ul>
+                hi
+            </ul>
+        )
+    }
+    
 }

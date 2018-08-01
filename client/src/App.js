@@ -3,17 +3,19 @@ import './App.css';
 import { connect } from 'react-redux'
 import * as actions from './actions/pieceActions';
 import { bindActionCreators } from 'redux'
+import PieceList from './components/Piecelist';
 
 export class App extends Component {
 
   componentDidMount() {
+    console.log('pieces')
     this.props.actions.fetchPieces();
   }
 
   render() {
     return (
       <div className="App">
-       {console.log(this.props)}
+        <PieceList pieces={this.props.pieces} />
       </div>
     );
   }
