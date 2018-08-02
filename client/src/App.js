@@ -22,7 +22,6 @@ export class App extends Component {
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(actions, dispatch)
-  // return {updatePieces: () => dispatch(fetchPieces())}
 })
 
 const mapStateToProps = state => ({pieces: state})

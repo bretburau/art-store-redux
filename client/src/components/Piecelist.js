@@ -6,7 +6,7 @@ const PieceList = (props) => {
         if(props.pieces){
             return props.pieces.map(piece => {
                 return(
-                    <Piece piece={piece} key={piece.id} />
+                    <ul><Piece piece={piece} key={piece.id} /></ul>
                 )
             })
         } 
