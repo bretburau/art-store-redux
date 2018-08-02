@@ -8,14 +8,13 @@ import PieceList from './components/Piecelist';
 export class App extends Component {
 
   componentDidMount() {
-    console.log('pieces')
-    this.props.actions.fetchPieces();
+    this.props.actions.fetchPieces(); 
   }
 
   render() {
     return (
       <div className="App">
-        <PieceList pieces={this.props.pieces} />
+        <PieceList pieces={this.props.pieces.pieces.pieces} /> {/*why is pieces all nested like this? */}
       </div>
     );
   }
@@ -26,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
   // return {updatePieces: () => dispatch(fetchPieces())}
 })
 
-const mapStateToProps = state => ({pieces: state.pieces})
+const mapStateToProps = state => ({pieces: state})
 
 // export default App;
 export const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)

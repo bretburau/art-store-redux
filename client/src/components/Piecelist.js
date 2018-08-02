@@ -1,14 +1,19 @@
 import React from 'react';
+import Piece from './Piece'
 
-export default class PieceList extends React.Component {
-    
-    render() {
-        console.log(this.props)
-        return(
-            <ul>
-                hi
-            </ul>
-        )
+const PieceList = (props) => {
+    const createList = () => {
+        if(props.pieces){
+            return props.pieces.map(piece => {
+                return(
+                    <Piece piece={piece} key={piece.id} />
+                )
+            })
+        } 
     }
-    
+    return(
+        <div>{createList()}</div>
+    )
 }
+
+export default PieceList;
