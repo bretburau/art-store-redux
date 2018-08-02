@@ -5,8 +5,9 @@ const PieceList = (props) => {
     const createList = () => {
         if(props.pieces){
             return props.pieces.map(piece => {
+                console.log(piece)
                 return(
-                    <ul><Piece piece={piece} key={piece.id} /></ul>
+                    <ul><Piece key={piece.id} piece={piece} /></ul>
                 )
             })
         } 
