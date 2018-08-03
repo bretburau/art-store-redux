@@ -5,6 +5,7 @@ import * as actions from './actions/pieceActions';
 import { bindActionCreators } from 'redux'
 import PieceList from './components/Piecelist';
 
+
 export class App extends Component {
 
   componentDidMount() {
@@ -14,7 +15,8 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <PieceList pieces={this.props.pieces.pieces.pieces} /> {/*why is pieces all nested like this? */}
+        <p>hi</p>
+        <PieceList pieces={this.props.pieces.pieces.pieces} /> {/*why is pieces all nested like this?*/}
       </div>
     );
   }
