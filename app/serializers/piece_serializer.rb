@@ -1,3 +1,3 @@
 class PieceSerializer < ActiveModel::Serializer
-  attributes :id, :name
+  attributes :id, :name, :picture
 end

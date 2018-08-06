@@ -5,6 +5,7 @@ const Piece = (props) => {
     return(
         <li>
             {props.piece.name}
+            <img src={props.piece.picture.url} />
         </li>
     )
 }

@@ -1,6 +1,6 @@
 class PiecesController < ApplicationController
     def index
-        @piece = Piece.all
+        @pieces = Piece.all
         render json: @pieces
     end
 
