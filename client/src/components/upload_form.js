@@ -7,7 +7,7 @@ export default class UploadForm extends React.Component {
 
         this.state = {
             uploads: '',
-            files: [],
+            file: [],
             title: ''
         }
     }
@@ -19,11 +19,9 @@ export default class UploadForm extends React.Component {
     }
 
     handleDrop = (files) => {
-        console.log('hello?')
         this.setState({
-            files
+            file: files[0]
         })
-        console.log('hi', this.state)
     }
 
     // readFile = (files) => {
@@ -55,7 +53,7 @@ export default class UploadForm extends React.Component {
                     <h3>Upload a new image</h3>
                     Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
                     <input type='submit' />
-                    <Dropzone onDrop={this.handleDrop}>
+                    <Dropzone onDrop={this.handleDrop.bind(this)}>
                         <button>Upload a new image</button>
                     </Dropzone>
                 </div>
