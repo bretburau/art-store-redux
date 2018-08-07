@@ -6,6 +6,11 @@ class PiecesController < ApplicationController
 
     def create
         @piece = Piece.new
+        @piece.name = params.require(:name)
+        @piece.picture = piece_params
+        @piece.save
+        # binding.pry
+        render json: @piece
     end 
 
     def piece_params
