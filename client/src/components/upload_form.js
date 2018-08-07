@@ -6,7 +6,6 @@ export default class UploadForm extends React.Component {
         super()
 
         this.state = {
-            uploads: '',
             file: [],
             title: ''
         }
@@ -24,35 +23,40 @@ export default class UploadForm extends React.Component {
         })
     }
 
-    // readFile = (files) => {
-    //     if(files && files[0]) {
-    //         let formPayload = new FormData();
-    //         formPayload.append('uploaded_image', files[0]);
-    //         this.sendImageToController(formPayload);
-    //     }
-    // }
+    readFile = (e) => {
+        e.preventDefault();
+        if(this.state.file) {
+            let formPayload = new FormData();
+            this.state.file.title = this.state.title
+            formPayload.append('uploaded_image', this.state.file);
+            formPayload.append('name', this.state.title) //TODO best way to do this?
+            this.sendImageToController(formPayload);
+        }
+    }
 
-    // sendImageToController = (formPayload) => {
-    //     fetch(`/pieces/new`, {
-    //         credentials: 'same-origin',
-    //         headers: {},
-    //         method: 'POST',
-    //         body: formPayload
-    //       })
-    //       //todo error handling?
-    //       .then(response => response.json())
-    //       .then(imageFromController => {
-    //       this.setState({uploads: this.state.uploads.concat(imageFromController)})
-    //     })
-    //     console.log(this.state)
-    // }
+    sendImageToController = (formPayload) => {
+        fetch(`/pieces/create`, {
+            credentials: 'same-origin',
+            headers: {},
+            method: 'POST',
+            body: formPayload
+          })
+          //todo error handling?
+          .then(response => response.json())
+          .then(imageFromController => {
+          this.setState({uploads: this.state.uploads.concat(imageFromController)})
+        })
+        console.log(this.state)
+    }
 
     render() {
         return(
                 <div>
-                    <h3>Upload a new image</h3>
-                    Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
-                    <input type='submit' />
+                    <form onSubmit={this.readFile.bind(this)}>
+                        <h3>Upload a new image</h3>
+                        Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
+                        <input type='submit' />
+                    </form>
                     <Dropzone onDrop={this.handleDrop.bind(this)}>
                         <button>Upload a new image</button>
                     </Dropzone>

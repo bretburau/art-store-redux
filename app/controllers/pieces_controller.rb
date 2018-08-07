@@ -4,11 +4,11 @@ class PiecesController < ApplicationController
         render json: @pieces
     end
 
-    def new
-        binding.pry
+    def create
+        @piece = Piece.new
     end 
 
     def piece_params
-        params.require(:piece).permit(:name, :picture)
+        params.require(:uploaded_image)
     end
 end
