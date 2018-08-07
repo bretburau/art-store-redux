@@ -7,7 +7,8 @@ export default class UploadForm extends React.Component {
 
         this.state = {
             file: [],
-            title: ''
+            title: '',
+            uploads: ''
         }
     }
 
@@ -27,7 +28,7 @@ export default class UploadForm extends React.Component {
         e.preventDefault();
         if(this.state.file) {
             let formPayload = new FormData();
-            this.state.file.title = this.state.title
+            // this.state.file.title = this.state.title
             formPayload.append('uploaded_image', this.state.file);
             formPayload.append('name', this.state.title) //TODO best way to do this?
             this.sendImageToController(formPayload);
@@ -46,7 +47,6 @@ export default class UploadForm extends React.Component {
           .then(imageFromController => {
           this.setState({uploads: this.state.uploads.concat(imageFromController)})
         })
-        console.log(this.state)
     }
 
     render() {

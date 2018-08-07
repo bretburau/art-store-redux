@@ -9,7 +9,7 @@ class PiecesController < ApplicationController
         @piece.name = params.require(:name)
         @piece.picture = piece_params
         @piece.save
-        # binding.pry
+        # binding.pry   
         render json: @piece
     end 
 
