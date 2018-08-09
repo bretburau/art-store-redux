@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 const PieceShow = ({piece}) => {
     return(
         <div>
+            <h3>{piece.name}</h3>
             <img src={piece.picture.url} alt={piece.name} width='200'/>
         </div>
     )
