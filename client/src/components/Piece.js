@@ -1,11 +1,11 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Piece = (props) => {
-    console.log(props)
     return(
         <li>
-            {props.piece.name}
-            <img src={props.piece.picture.url} />
+            <Link to={`/pieces/${props.piece.id}`}>{props.piece.name}</Link>
+            <img src={props.piece.picture.url} height='150' />
         </li>
     )
 }

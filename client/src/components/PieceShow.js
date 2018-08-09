@@ -1,18 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux';
 
-const PieceShow = (props) => {
+const PieceShow = ({piece}) => {
     return(
         <div>
-        hello there
+            <img src={piece.picture.url} alt={piece.name} width='200'/>
         </div>
     )
 }
 
-const mapStateToProps = (state, ownProps) => {
-    console.log(state)
-    return {
-        pieceId: ownProps.match.params.pieceId
+const mapStateToProps = (state, ownProps) => { //TODO state empty if directly routed to page?
+        const piece = state.pieces.pieces.find((p) => {
+            return p.id === parseInt(ownProps.match.params.pieceId)
+        })
+        if(piece) {
+            return { piece }
+        } else {
+            return {piece: {} 
+        }
     }
 }
 
