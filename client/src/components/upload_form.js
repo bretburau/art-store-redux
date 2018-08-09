@@ -45,9 +45,9 @@ export default class UploadForm extends React.Component {
           //todo error handling?
           .then(response => response.json())
           .then(imageFromController => {
-              debugger;
-          this.setState({uploads: this.state.uploads.concat(imageFromController)})
+        //   this.setState({uploads: this.state.uploads.concat(imageFromController)}) // <---NOT NECESSARY?
         })
+        this.props.history.push('/')
     }
 
     render() {
