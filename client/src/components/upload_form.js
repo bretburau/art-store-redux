@@ -47,8 +47,7 @@ export default class UploadForm extends React.Component {
           .then(imageFromController => {
         //   this.setState({uploads: this.state.uploads.concat(imageFromController)}) // <---NOT NECESSARY?
         })
-        debugger;
-        this.props.history.push('/') // re-routes to home page
+        this.props.history.push('/') // re-routes to home page, TODO send to piece show page
     }
 
     render() {
