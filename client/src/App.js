@@ -28,5 +28,4 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({pieces: state})
 
-// export default App;
 export const ConnectedApp = connect(mapStateToProps, mapDispatchToProps)(App)
