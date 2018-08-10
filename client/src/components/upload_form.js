@@ -1,7 +1,10 @@
 import React from 'react'
 import Dropzone from 'react-dropzone'
+import { connect } from 'react-redux'
+import * as actions from '../actions/tagActions';
+import { bindActionCreators } from 'redux'
 
-export default class UploadForm extends React.Component {
+class UploadForm extends React.Component {
     constructor() {
         super()
 
@@ -65,3 +68,11 @@ export default class UploadForm extends React.Component {
         )
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(actions, dispatch)
+  })
+  
+const mapStateToProps = state => ({pieces: state})
+  
+export default UploadForm = connect(mapStateToProps, mapDispatchToProps)(UploadForm)

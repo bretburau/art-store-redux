@@ -7,5 +7,4 @@ export function fetchTags() {
             .then(response => response.json())
             .then(tags => dispatch({type: 'FETCH_TAGS', payload: tags}))
     }
-    }
 }
