@@ -12,7 +12,7 @@ const PieceShow = ({piece}) => {
 
 const mapStateToProps = (state, ownProps) => { //TODO state empty if directly routed to page?
         const piece = state.pieces.pieces.find((p) => {
-            return p.id === parseInt(ownProps.match.params.pieceId)
+            return p.id === parseInt(ownProps.match.params.pieceId, 10)
         })
         if(piece) {
             return { piece }

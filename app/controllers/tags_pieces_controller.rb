@@ -1,0 +1,2 @@
+class TagsPiecesController < ApplicationController
+end

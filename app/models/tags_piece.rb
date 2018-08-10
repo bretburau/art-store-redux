@@ -1,0 +1,2 @@
+class TagsPiece < ApplicationRecord
+end
