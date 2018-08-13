@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone'
 // import { ConnectedApp } from '../App';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import * as actions from '../actions/pieceActions';
+import * as actions from '../actions/tagActions';
 
 
 class UploadForm extends React.Component {
@@ -23,6 +23,7 @@ class UploadForm extends React.Component {
         //     .then(res => res.json())
         //     .then(tags => this.setState({tags: tags}))
         this.props.actions.fetchTags()
+        debugger;
     }
 
     handleTextChange = (event) => {
@@ -64,6 +65,9 @@ class UploadForm extends React.Component {
 
     render() {
         console.log('state:', this.state, 'props', this.props)
+        const tagList = this.state.tags.map((tag) => {
+            return <li>{tag.name}</li>
+        })
         return(
                 <div>
                     <form onSubmit={this.readFile.bind(this)}>
@@ -71,6 +75,7 @@ class UploadForm extends React.Component {
                         Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
                         <input type='submit' />
                     </form>
+                    {tagList}
                     <Dropzone onDrop={this.handleDrop.bind(this)}>
                         <button>Upload a new image</button>
                     </Dropzone>
