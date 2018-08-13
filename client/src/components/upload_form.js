@@ -1,8 +1,10 @@
 import React from 'react'
 import Dropzone from 'react-dropzone'
+// import { ConnectedApp } from '../App';
 import { connect } from 'react-redux'
-import * as actions from '../actions/tagActions';
-import { bindActionCreators } from 'redux'
+import { bindActionCreators } from 'redux';
+import * as actions from '../actions/pieceActions';
+
 
 class UploadForm extends React.Component {
     constructor() {
@@ -11,8 +13,16 @@ class UploadForm extends React.Component {
         this.state = {
             file: [],
             title: '',
-            uploads: ''
+            uploads: '',
+            tags: []
         }
+    }
+
+    componentDidMount() {
+        // fetch('http://localhost:3001/tags')
+        //     .then(res => res.json())
+        //     .then(tags => this.setState({tags: tags}))
+        this.props.actions.fetchTags()
     }
 
     handleTextChange = (event) => {
@@ -31,7 +41,6 @@ class UploadForm extends React.Component {
         e.preventDefault();
         if(this.state.file) {
             let formPayload = new FormData();
-            // this.state.file.title = this.state.title
             formPayload.append('uploaded_image', this.state.file);
             formPayload.append('name', this.state.title) //TODO best way to do this?
             this.sendImageToController(formPayload);
@@ -54,6 +63,7 @@ class UploadForm extends React.Component {
     }
 
     render() {
+        console.log('state:', this.state, 'props', this.props)
         return(
                 <div>
                     <form onSubmit={this.readFile.bind(this)}>
@@ -69,10 +79,11 @@ class UploadForm extends React.Component {
     }
 }
 
+const mapStateToProps = (state) =>({pieces: state})
+
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(actions, dispatch)
-  })
-  
-const mapStateToProps = state => ({pieces: state})
-  
-export default UploadForm = connect(mapStateToProps, mapDispatchToProps)(UploadForm)
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UploadForm)

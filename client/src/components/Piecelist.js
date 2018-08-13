@@ -6,13 +6,13 @@ const PieceList = (props) => {
         if(props.pieces){
             return props.pieces.map(piece => {
                 return(
-                    <ul><Piece key={piece.id} piece={piece} /></ul>
+                    <Piece key={piece.id} piece={piece} />
                 )
             })
         } 
     }
     return(
-        <div>{createList()}</div>
+        <ul>{createList()}</ul>
     )
 }
 
