@@ -14,8 +14,8 @@ class UploadForm extends React.Component {
         this.state = {
             file: [],
             title: '',
-            uploads: '',
-            tags: []
+            tags: [],
+            checkedBoxesIds: []
         }
     }
 
@@ -37,6 +37,7 @@ class UploadForm extends React.Component {
 
     readFile = (e) => {
         e.preventDefault();
+        debugger;
         if(this.state.file) {
             let formPayload = new FormData();
             formPayload.append('uploaded_image', this.state.file);
@@ -60,19 +61,31 @@ class UploadForm extends React.Component {
         this.props.history.push('/') // re-routes to home page, TODO send to piece show page
     }
 
+    toggleCheckbox = (box, state) => {
+        console.log(box, state);
+        const newValue = {[box.id]: state}
+        this.setState({
+            checkedBoxesIds: newValue
+        })
+    }
+
     render() {
         console.log('state:', this.state, 'props', this.props)
         const tagCheckboxList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
-            return <Checkbox tag={tag} key={i} />
+            return <Checkbox
+             tag={tag} 
+             key={i}
+             handleCheckboxChange={this.toggleCheckbox}
+             />
         })
         return(
             <div>
                 <form onSubmit={this.readFile.bind(this)}>
                     <h3>Upload a new image</h3>
-                    Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
+                    Title: <input type='text' name='title' value={this.state.title} onChange={()=> {this.handleTextChange.bind.bind(this)}} />
+                    {tagCheckboxList}
                     <input type='submit' />
                 </form>
-                {tagCheckboxList}
                 <Dropzone onDrop={this.handleDrop.bind(this)}>
                     <button>Upload a new image</button>
                 </Dropzone>
