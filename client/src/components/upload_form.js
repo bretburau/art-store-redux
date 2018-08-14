@@ -23,7 +23,6 @@ class UploadForm extends React.Component {
         //     .then(res => res.json())
         //     .then(tags => this.setState({tags: tags}))
         this.props.actions.fetchTags()
-        debugger;
     }
 
     handleTextChange = (event) => {
@@ -65,26 +64,33 @@ class UploadForm extends React.Component {
 
     render() {
         console.log('state:', this.state, 'props', this.props)
-        const tagList = this.state.tags.map((tag) => {
-            return <li>{tag.name}</li>
-        })
+        let tagList = []
+        debugger;
+        if(this.props.tags.tags) {
+            tagList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
+                return <li key={i}>{tag.name}</li>
+            })
+        }
         return(
-                <div>
-                    <form onSubmit={this.readFile.bind(this)}>
-                        <h3>Upload a new image</h3>
-                        Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
-                        <input type='submit' />
-                    </form>
-                    {tagList}
-                    <Dropzone onDrop={this.handleDrop.bind(this)}>
-                        <button>Upload a new image</button>
-                    </Dropzone>
-                </div>
+            <div>
+                <form onSubmit={this.readFile.bind(this)}>
+                    <h3>Upload a new image</h3>
+                    Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
+                    <input type='submit' />
+                </form>
+                {tagList}
+                <Dropzone onDrop={this.handleDrop.bind(this)}>
+                    <button>Upload a new image</button>
+                </Dropzone>
+            </div>
         )
     }
 }
 
-const mapStateToProps = (state) =>({pieces: state})
+const mapStateToProps = (state) =>({
+    pieces: state.pieces,
+    tags: state.tags
+})
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(actions, dispatch)
