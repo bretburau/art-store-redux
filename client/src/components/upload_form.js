@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/tagActions';
+import Checkbox from '../components/Checkbox'
 
 
 class UploadForm extends React.Component {
@@ -19,9 +20,6 @@ class UploadForm extends React.Component {
     }
 
     componentDidMount() {
-        // fetch('http://localhost:3001/tags')
-        //     .then(res => res.json())
-        //     .then(tags => this.setState({tags: tags}))
         this.props.actions.fetchTags()
     }
 
@@ -64,8 +62,8 @@ class UploadForm extends React.Component {
 
     render() {
         console.log('state:', this.state, 'props', this.props)
-        const tagList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
-            return <li key={i}>{tag.name}</li>
+        const tagCheckboxList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
+            return <Checkbox tag={tag} key={i} />
         })
         return(
             <div>
@@ -74,7 +72,7 @@ class UploadForm extends React.Component {
                     Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
                     <input type='submit' />
                 </form>
-                {tagList}
+                {tagCheckboxList}
                 <Dropzone onDrop={this.handleDrop.bind(this)}>
                     <button>Upload a new image</button>
                 </Dropzone>
