@@ -64,13 +64,9 @@ class UploadForm extends React.Component {
 
     render() {
         console.log('state:', this.state, 'props', this.props)
-        let tagList = []
-        debugger;
-        if(this.props.tags.tags) {
-            tagList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
-                return <li key={i}>{tag.name}</li>
-            })
-        }
+        const tagList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
+            return <li key={i}>{tag.name}</li>
+        })
         return(
             <div>
                 <form onSubmit={this.readFile.bind(this)}>
