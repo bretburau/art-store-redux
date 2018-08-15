@@ -45,7 +45,6 @@ class UploadForm extends React.Component {
         for (const checkbox of this.selectedCheckboxes) {
             tagIds.push(checkbox.id)
         }
-        debugger
         if(this.state.file) {
             let formPayload = new FormData();
             formPayload.append('uploaded_image', this.state.file);

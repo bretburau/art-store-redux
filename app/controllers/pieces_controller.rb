@@ -8,14 +8,13 @@ class PiecesController < ApplicationController
         @piece = Piece.new
         @piece.name = params.require(:name)
         @piece.picture = piece_params
-        tagIds = params.require(:tagIds)
+        tagIds = params.require(:tagIds).split(',')
         binding.pry
         tagIds.each do |tag_id|
-            tag = Tags.find(tag_id)
+            tag = Tag.find(tag_id.to_i)
             @piece.tags << tag
         end
         @piece.save
-        binding.pry   
         render json: @piece
     end 
 
