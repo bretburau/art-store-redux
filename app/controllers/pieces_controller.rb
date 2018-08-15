@@ -18,6 +18,11 @@ class PiecesController < ApplicationController
         render json: @piece
     end 
 
+    def show
+        @piece = Piece.find(params[:id])
+        render json: @piece
+    end
+
     def piece_params
         params.require(:uploaded_image)
     end
