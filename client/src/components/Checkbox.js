@@ -16,12 +16,10 @@ export default class Checkbox extends React.Component {
               isChecked: !isChecked,
             }
         ));
-        console.log(this.state.isChecked)
         handleCheckboxChange(this.props.tag, this.state.isChecked)
     }
 
     render() {
-        console.log(this.state.isChecked)
         const tag = this.props.tag
         return(
             <div>
@@ -29,6 +27,7 @@ export default class Checkbox extends React.Component {
                 <input type='checkbox' value={tag.name} checked={this.state.isChecked} onChange={this.toggleCheckbox}  />
                 {tag.name}
                 </label>
+                {this.props.isChecked}
             </div>
         )
     }

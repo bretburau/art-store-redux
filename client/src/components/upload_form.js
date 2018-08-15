@@ -15,10 +15,14 @@ class UploadForm extends React.Component {
             file: [],
             title: '',
             tags: [],
-            checkedBoxesIds: []
         }
     }
 
+    componentWillMount = () => {
+        this.selectedCheckboxes = new Set();
+      }
+
+    
     componentDidMount() {
         this.props.actions.fetchTags()
     }
@@ -37,11 +41,16 @@ class UploadForm extends React.Component {
 
     readFile = (e) => {
         e.preventDefault();
-        debugger;
+        let tagIds = [];
+        for (const checkbox of this.selectedCheckboxes) {
+            tagIds.push(checkbox.id)
+        }
+        debugger
         if(this.state.file) {
             let formPayload = new FormData();
             formPayload.append('uploaded_image', this.state.file);
             formPayload.append('name', this.state.title) //TODO best way to do this?
+            formPayload.append('tagIds', tagIds)
             this.sendImageToController(formPayload);
         }
     }
@@ -61,16 +70,24 @@ class UploadForm extends React.Component {
         this.props.history.push('/') // re-routes to home page, TODO send to piece show page
     }
 
-    toggleCheckbox = (box, state) => {
-        console.log(box, state);
-        const newValue = {[box.id]: state}
-        this.setState({
-            checkedBoxesIds: newValue
-        })
-    }
+    // toggleCheckbox = (box, state) => {
+    //     const newValue = {[box.id]: !state} //TODO Why is this inverted?
+    //     this.setState({
+    //         checkedBoxesIds: newValue
+    //     })
+    //     console.log(this.state.checkedBoxesIds)
+    // }
+
+    toggleCheckbox = label => {
+        if (this.selectedCheckboxes.has(label)) {
+          this.selectedCheckboxes.delete(label);
+        } else {
+          this.selectedCheckboxes.add(label);
+        }
+        console.log(this.selectedCheckboxes)
+      } 
 
     render() {
-        console.log('state:', this.state, 'props', this.props)
         const tagCheckboxList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
             return <Checkbox
              tag={tag} 
@@ -82,7 +99,7 @@ class UploadForm extends React.Component {
             <div>
                 <form onSubmit={this.readFile.bind(this)}>
                     <h3>Upload a new image</h3>
-                    Title: <input type='text' name='title' value={this.state.title} onChange={()=> {this.handleTextChange.bind.bind(this)}} />
+                    Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
                     {tagCheckboxList}
                     <input type='submit' />
                 </form>
