@@ -9,7 +9,6 @@ class PiecesController < ApplicationController
         @piece.name = params.require(:name)
         @piece.picture = piece_params
         tagIds = params.require(:tagIds).split(',')
-        binding.pry
         tagIds.each do |tag_id|
             tag = Tag.find(tag_id.to_i)
             @piece.tags << tag

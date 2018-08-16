@@ -15,6 +15,7 @@ class UploadForm extends React.Component {
             file: [],
             title: '',
             tags: [],
+            upload: ''
         }
     }
 
@@ -64,18 +65,14 @@ class UploadForm extends React.Component {
           //todo error handling?
           .then(response => response.json())
           .then(imageFromController => {
-        //   this.setState({uploads: this.state.uploads.concat(imageFromController)}) // <---NOT NECESSARY?
+            //   this.setState({uploads: this.state.uploads.concat(imageFromController)}) // <---NOT NECESSARY?  
+            // this.setState({uploads: imageFromController}) 
+            console.log(imageFromController)    
+            this.props.history.push(`/pieces/${imageFromController.id}`)     
         })
-        this.props.history.push('/') // re-routes to home page, TODO send to piece show page
+        // console.log(this.state)
+        // this.props.history.push('/') // re-routes to home page, TODO send to piece show page
     }
-
-    // toggleCheckbox = (box, state) => {
-    //     const newValue = {[box.id]: !state} //TODO Why is this inverted?
-    //     this.setState({
-    //         checkedBoxesIds: newValue
-    //     })
-    //     console.log(this.state.checkedBoxesIds)
-    // }
 
     toggleCheckbox = label => {
         if (this.selectedCheckboxes.has(label)) {
