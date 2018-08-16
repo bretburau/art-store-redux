@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import * as tagActions from '../actions/tagActions';
 import * as pieceActions from '../actions/pieceActions';
 import { connect } from 'react-redux'
-
+import Tag from '../components/Tag'
 
 class TagsList extends React.Component {
     componentDidMount() {
@@ -12,7 +12,7 @@ class TagsList extends React.Component {
 
     render() {
         const tagList = this.props.tags.tags.map(tag => {
-            return(<li key={tag.id}>{tag.name}</li>)
+            return(<Tag tag={tag} key={tag.id} />)
         }) 
         return(
             <ul>{tagList}</ul>

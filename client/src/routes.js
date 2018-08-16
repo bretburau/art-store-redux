@@ -9,9 +9,9 @@ export default () => {
     return(
         <Router>
             <Switch>
-                <Route exact path='/' component={ConnectedApp} />>
-                <Route exact path='/upload' component={UploadForm} />
-                <Route exact path='/pieces/:pieceId' component={PieceShow} />
+                <Route path='/' component={ConnectedApp} />>
+                <Route path='/upload' component={UploadForm} />
+                <Route path='/pieces/:pieceId' component={PieceShow} />
                 <Route path='/tags' component={TagsList} />
             </Switch>
         </Router>
