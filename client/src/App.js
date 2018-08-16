@@ -15,7 +15,6 @@ export class App extends Component {
   render() {
     return (
       <div className="App">
-        <p>hi</p>
         <PieceList pieces={this.props.pieces.pieces.pieces} /> {/*why is pieces all nested like this?*/}
       </div>
     );

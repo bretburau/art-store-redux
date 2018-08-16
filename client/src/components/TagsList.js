@@ -5,10 +5,17 @@ import * as pieceActions from '../actions/pieceActions';
 import { connect } from 'react-redux'
 
 
-class Tags extends React.Component {
+class TagsList extends React.Component {
+    componentDidMount() {
+        this.props.actions.fetchTags()
+    }
+
     render() {
+        const tagList = this.props.tags.tags.map(tag => {
+            return(<li key={tag.id}>{tag.name}</li>)
+        }) 
         return(
-            <p>Hi</p>
+            <ul>{tagList}</ul>
         )
     }
 }
@@ -22,4 +29,4 @@ const mapDispatchToProps = dispatch => (    {
     actions: bindActionCreators(Object.assign({}, tagActions, pieceActions), dispatch)
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(Tags)
+export default connect(mapStateToProps,mapDispatchToProps)(TagsList)
