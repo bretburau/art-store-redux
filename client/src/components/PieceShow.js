@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux';
 
-const PieceShow = ({piece}) => {
-    console.log(piece)
+const PieceShow = ({piece, match}) => {
+    console.log(piece, match)
     return(
         <div>
             <h3>{piece.name}</h3>
@@ -12,15 +12,14 @@ const PieceShow = ({piece}) => {
 }
 
 const mapStateToProps = (state, ownProps) => { //TODO state empty if directly routed to page?
-        
-        const piece = state.pieces.pieces.find((p) => {
-            return p.id === parseInt(ownProps.match.params.pieceId, 10)
-        })
-        console.log(piece)
-        if(piece) {
-            return { piece }
-        } else {
-            return {piece: {} 
+    const piece = state.pieces.pieces.find((p) => {
+        return p.id === parseInt(ownProps.match.params.pieceId, 10)
+    })
+    console.log(piece, state)
+    if(piece) {
+        return { piece }
+    } else {
+        return {piece: {} 
         }
     }
 }
