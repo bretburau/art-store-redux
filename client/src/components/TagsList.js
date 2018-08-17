@@ -4,9 +4,11 @@ import * as tagActions from '../actions/tagActions';
 import * as pieceActions from '../actions/pieceActions';
 import { connect } from 'react-redux'
 import Tag from '../components/Tag'
+import Navbar from './Navbar';
 
-class TagsList extends React.Component {
+class TagIndex extends React.Component {
     componentDidMount() {
+        debugger;
         this.props.actions.fetchTags()
     }
 
@@ -15,7 +17,10 @@ class TagsList extends React.Component {
             return(<Tag tag={tag} key={tag.id} />)
         }) 
         return(
-            <ul>{tagList}</ul>
+            <div>
+                <Navbar />
+                <ul>{tagList}</ul>
+            </div>
         )
     }
 }
@@ -29,4 +34,4 @@ const mapDispatchToProps = dispatch => (    {
     actions: bindActionCreators(Object.assign({}, tagActions, pieceActions), dispatch)
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(TagsList)
+export default connect(mapStateToProps,mapDispatchToProps)(TagIndex)

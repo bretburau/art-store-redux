@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/tagActions';
 import Checkbox from '../components/Checkbox'
+import Navbar from './Navbar';
 
 
 class UploadForm extends React.Component {
@@ -93,6 +94,7 @@ class UploadForm extends React.Component {
         })
         return(
             <div>
+                <Navbar />
                 <form onSubmit={this.readFile.bind(this)}>
                     <h3>Upload a new image</h3>
                     Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
