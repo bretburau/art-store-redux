@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as tagActions from '../actions/tagActions';
 import * as pieceActions from '../actions/pieceActions';
+import Navbar from './Navbar';
 
 class PieceShow extends React.Component {
     componentDidMount() {
@@ -14,15 +15,16 @@ class PieceShow extends React.Component {
     render() {
         const piece = this.props.piece
         console.log(piece)
-        if(piece.url) {
+        if(Object.keys(piece).length !== 0 ) {
             return(
                 <div>
+                    <Navbar />
                     <h3>{piece.name}</h3>
                     <img src={piece.picture.url} alt={piece.name} width='200'/>
                 </div>
             )
         } else {
-            return(<div></div>)
+            return(<Navbar />)
         }
     }
 }
