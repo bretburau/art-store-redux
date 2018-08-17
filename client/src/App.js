@@ -5,6 +5,7 @@ import * as actions from './actions/pieceActions';
 import { bindActionCreators } from 'redux'
 import PieceList from './components/Piecelist';
 import TopNav from './components/TopNav'
+import { Container } from 'reactstrap'
 
 export class App extends Component {
 
@@ -14,10 +15,10 @@ export class App extends Component {
 
   render() {
     return (
-      <div >
+      <Container>
         <TopNav />
         <PieceList pieces={this.props.pieces.pieces.pieces} /> {/*why is pieces all nested like this?*/}
-      </div>
+      </Container>
     );
   }
 }

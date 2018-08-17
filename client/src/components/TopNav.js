@@ -13,9 +13,10 @@ import {
     DropdownMenu,
     DropdownItem } from 'reactstrap';
 
+
 const TopNav = () => {
     return(
-        <Navbar color="light" light expand="md">
+        <Nav>
             <NavItem>
                 <NavLink href='/'>Home</NavLink>
             </NavItem>
@@ -25,7 +26,7 @@ const TopNav = () => {
             <NavItem>
                 <NavLink href='/upload'>Upload</NavLink>
             </NavItem>
-        </Navbar>
+        </Nav>
     )
 }
 

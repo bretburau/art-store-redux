@@ -1,5 +1,6 @@
 import React from 'react';
 import Piece from './Piece'
+import { Row } from 'reactstrap'
 
 const PieceList = (props) => {
     const createList = () => {
@@ -12,7 +13,7 @@ const PieceList = (props) => {
         } 
     }
     return(
-        <ul>{createList()}</ul>
+        <Row>{createList()}</Row>
     )
 }
 
