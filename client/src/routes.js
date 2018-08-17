@@ -12,7 +12,7 @@ export default () => {
                 <Route exact path='/' component={ConnectedApp} />>
                 <Route  path='/upload' component={UploadForm} />
                 <Route  path='/pieces/:pieceId' component={PieceShow} />
-                <Route path='/tags' component={TagIndex} />
+                <Route  path='/tags' component={TagIndex} />
             </Switch>
         </Router>
     )
