@@ -8,6 +8,7 @@ import rootReducer from './reducers/root_reducer'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
 import AppRoutes from './routes'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

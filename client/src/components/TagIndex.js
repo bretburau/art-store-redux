@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import * as tagActions from '../actions/tagActions';
 import * as pieceActions from '../actions/pieceActions';
 import { connect } from 'react-redux'
-import Navbar from './Navbar';
+import TopNav from './TopNav';
 import TagList from './Taglist';
 
 class TagIndex extends React.Component {
@@ -18,11 +18,11 @@ class TagIndex extends React.Component {
         if(this.props.tags.tags.length > 0) {
             return(
                 <div>
-                    <Navbar />
+                    <TopNav />
                     <TagList tags={this.props.tags.tags}/>
                 </div>
             )
-        } else {return <div><Navbar /></div>}
+        } else {return <div><TopNav /></div>}
     }
 }
 

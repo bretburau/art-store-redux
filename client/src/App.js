@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import * as actions from './actions/pieceActions';
 import { bindActionCreators } from 'redux'
 import PieceList from './components/Piecelist';
-import Navbar from './components/Navbar'
+import TopNav from './components/TopNav'
 
 export class App extends Component {
 
@@ -14,8 +14,8 @@ export class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Navbar />
+      <div >
+        <TopNav />
         <PieceList pieces={this.props.pieces.pieces.pieces} /> {/*why is pieces all nested like this?*/}
       </div>
     );
