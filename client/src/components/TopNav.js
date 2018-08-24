@@ -6,11 +6,8 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem } from 'reactstrap';
+    NavLink
+ } from 'reactstrap';
 
 
     export default class TopNav extends React.Component {
@@ -30,11 +27,11 @@ import {
         render() {
           return (
             <div>
-              <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">reactstrap</NavbarBrand>
+              <Navbar color="success" dark expand="md">
+                <NavbarBrand href="/">Image Organizer</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
-                  <Nav pills className="ml-auto" navbar>
+                  <Nav className="ml-auto" navbar>
                     <NavItem>
                       <NavLink href="/upload/">Upload</NavLink>
                     </NavItem>
@@ -48,15 +45,3 @@ import {
           );
         }
       }
-
-// <Nav>
-        //     <NavItem>
-        //         <NavLink href='/'>Home</NavLink>
-        //     </NavItem>
-        //     <NavItem>
-        //         <NavLink href='/tags'>Tags</NavLink>
-        //     </NavItem>
-        //     <NavItem>
-        //         <NavLink href='/upload'>Upload</NavLink>
-        //     </NavItem>
-        // </Nav>
