@@ -1,5 +1,4 @@
 import React from 'react'
-// import { NavLink } from 'react-router-dom'
 import {
     Collapse,
     Navbar,
@@ -14,20 +13,50 @@ import {
     DropdownItem } from 'reactstrap';
 
 
-const TopNav = () => {
-    return(
-        <Nav>
-            <NavItem>
-                <NavLink href='/'>Home</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink href='/tags'>Tags</NavLink>
-            </NavItem>
-            <NavItem>
-                <NavLink href='/upload'>Upload</NavLink>
-            </NavItem>
-        </Nav>
-    )
-}
+    export default class TopNav extends React.Component {
+        constructor(props) {
+          super(props);
+      
+          this.toggle = this.toggle.bind(this);
+          this.state = {
+            isOpen: false
+          };
+        }
+        toggle() {
+          this.setState({
+            isOpen: !this.state.isOpen
+          });
+        }
+        render() {
+          return (
+            <div>
+              <Navbar color="light" light expand="md">
+                <NavbarBrand href="/">reactstrap</NavbarBrand>
+                <NavbarToggler onClick={this.toggle} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                  <Nav pills className="ml-auto" navbar>
+                    <NavItem>
+                      <NavLink href="/upload/">Upload</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="/tags">Tags</NavLink>
+                    </NavItem>
+                  </Nav>
+                </Collapse>
+              </Navbar>
+            </div>
+          );
+        }
+      }
 
-export default TopNav;
+// <Nav>
+        //     <NavItem>
+        //         <NavLink href='/'>Home</NavLink>
+        //     </NavItem>
+        //     <NavItem>
+        //         <NavLink href='/tags'>Tags</NavLink>
+        //     </NavItem>
+        //     <NavItem>
+        //         <NavLink href='/upload'>Upload</NavLink>
+        //     </NavItem>
+        // </Nav>

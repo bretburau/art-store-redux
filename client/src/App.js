@@ -15,10 +15,10 @@ export class App extends Component {
 
   render() {
     return (
-      <Container>
+      <div>
         <TopNav />
         <PieceList pieces={this.props.pieces.pieces.pieces} /> {/*why is pieces all nested like this?*/}
-      </Container>
+      </div>
     );
   }
 }
