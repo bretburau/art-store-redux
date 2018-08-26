@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as tagActions from '../actions/tagActions';
 import * as pieceActions from '../actions/pieceActions';
 import TopNav from './TopNav';
+import { Container, Row, Col } from 'reactstrap'
 
 class PieceShow extends React.Component {
     componentDidMount() {
@@ -16,11 +17,24 @@ class PieceShow extends React.Component {
         const piece = this.props.piece
         console.log(piece)
         if(Object.keys(piece).length !== 0 ) {
+            const tags = piece.tags.map(tag => {
+                return(
+                    <li key={tag.id}>{tag.name}</li>
+                )
+            })
             return(
                 <div>
                     <TopNav />
-                    <h3>{piece.name}</h3>
-                    <img src={piece.picture.url} alt={piece.name} width='200'/>
+                    <Container className='mt-sm-4'>
+                        <Row>
+                            <Col className='text-center'>
+                                <h3>{piece.name}</h3>
+                                <img src={piece.picture.url} alt={piece.name} width='300'/>
+                                <h4>Tags:</h4>
+                                <ul className='clean-ul'>{tags}</ul>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
             )
         } else {
