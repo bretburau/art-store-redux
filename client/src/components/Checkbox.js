@@ -1,4 +1,5 @@
 import React from 'react'
+import { Label, Input } from 'reactstrap'
 
 export default class Checkbox extends React.Component {
     constructor() {
@@ -22,13 +23,10 @@ export default class Checkbox extends React.Component {
     render() {
         const tag = this.props.tag
         return(
-            <div>
-                <label>
-                <input type='checkbox' value={tag.name} checked={this.state.isChecked} onChange={this.toggleCheckbox}  />
+            <Label check className='mr-sm-3' >
+                <Input type='checkbox' value={tag.name} checked={this.state.isChecked} onChange={this.toggleCheckbox}  />
                 {tag.name}
-                </label>
-                {this.props.isChecked}
-            </div>
+            </Label>
         )
     }
 }

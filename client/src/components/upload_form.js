@@ -6,7 +6,7 @@
     import * as actions from '../actions/tagActions';
     import Checkbox from '../components/Checkbox'
     import TopNav from './TopNav';
-    import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
+    import { Container, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 
 
     class UploadForm extends React.Component {
@@ -94,26 +94,40 @@
                 tag={tag} 
                 key={i}
                 handleCheckboxChange={this.toggleCheckbox}
+                className='mr-sm-5'
                 />
             })
             return(
                 <div>
                     <TopNav />
-                    <Form onSubmit={this.readFile.bind(this)} className='text-center' >
-                        {/* <form onSubmit={this.readFile.bind(this)}> */}
-                        <br />
-                            <h3>Upload a new image</h3>
-                            Title: <input type='text' name='title' value={this.state.title} onChange={this.handleTextChange} />
-                            {tagCheckboxList}
-                            <input type='submit' />
-                            
-                        {/* </form> */}
-                    </Form>
-                    <div style={dropzoneStyle} >
+                    <Container className='text-center'>
+                        <br />  
+                        <h3>Upload a new image</h3>
+                        {/* <Form inline onSubmit={this.readFile.bind(this)} width="30%" >
+                            <FormGroup className='mb-2' row>
+                                <Input type='text' placeholder='Title' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
+                            </FormGroup>
+                            <FormGroup>
+                                {tagCheckboxList}
+                            </FormGroup>    
+                            <input type='submit' />        
+                        </Form> */}
+                        <Form inline className='mt-sm-3 text-center'  onSubmit={this.readFile.bind(this)}>
+                            <FormGroup className="mb-2 mr-sm-2 mb-sm-0 ">
+                                <Label for="exampleEmail" className="mr-sm-2">Title</Label>
+                                <Input type='text' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
+                            </FormGroup>
+                            <FormGroup check inline className="mb-2 mr-sm-2 mb-sm-0">
+                                <Label for="examplePassword" className="mr-sm-2">Tags:</Label>
+                                {tagCheckboxList}
+                            </FormGroup>
+                            <Button>Submit</Button>
+                        </Form>
                         <Dropzone onDrop={this.handleDrop.bind(this)}>
                             <p>Click or drag to upload an image!</p>
                         </Dropzone>
-                    </div>
+                    </Container>
+                    
                 </div>
             )
         }
