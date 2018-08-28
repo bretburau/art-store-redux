@@ -90,7 +90,7 @@
                 margin: "0 auto"
             }
             const tagCheckboxList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
-                return <Checkbox
+                return <Checkbox name='checkboxes'
                 tag={tag} 
                 key={i}
                 handleCheckboxChange={this.toggleCheckbox}
@@ -103,15 +103,6 @@
                     <Container>
                         <br />  
                         <h3 style={{'text-align': 'center'}}>Upload a new image</h3>
-                        {/* <Form inline onSubmit={this.readFile.bind(this)} width="30%" >
-                            <FormGroup className='mb-2' row>
-                                <Input type='text' placeholder='Title' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
-                            </FormGroup>
-                            <FormGroup>
-                                {tagCheckboxList}
-                            </FormGroup>    
-                            <input type='submit' />        
-                        </Form> */}
                         <Row>
                             <Col className='col-sm-3'>
                                 <Dropzone onDrop={this.handleDrop.bind(this)}>
@@ -119,19 +110,25 @@
                                 </Dropzone>
                             </Col>
                             <Col className='col-sm-9'>
-                                <Form inline className='ml-sm-1 mt-sm-5 mt-sm-3 text-center'  onSubmit={this.readFile.bind(this)}>
-                                    <FormGroup className="mb-2 mr-sm-2 mb-sm-0 ">
-                                        <Label for="exampleEmail" className="mr-sm-2">Title</Label>
-                                        <Input type='text' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
-                                    </FormGroup>
-                                    <FormGroup check inline className="mb-2 mr-sm-2 mb-sm-0">
-                                        <Label for="examplePassword" className="mr-sm-2">Tags:</Label>
-                                        {tagCheckboxList}
-                                    </FormGroup>
-                                    <Button>Submit</Button>
+                                <Form inline className='ml-sm-1 p-sm-5 text-center fill-height form-border'  onSubmit={this.readFile.bind(this)}>
+                                    <Container>
+                                        <Row>
+                                            <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                                                <Label for="title" className="mr-sm-2">Title</Label>
+                                                <Input type='text' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
+                                            </FormGroup>
+                                        </Row>
+                                        <Row className='mt-sm-3'>
+                                            <FormGroup check inline className="mb-2 mr-sm-2 mb-sm-0">
+                                                <Label for="checkboxes" className="mr-sm-2">Tags:</Label>
+                                                {tagCheckboxList}
+                                            </FormGroup>
+                                        </Row>
+                                    </Container>
                                 </Form>
                             </Col>
                         </Row>
+                        <Row className='mt-sm-5 text-center'><Button size='lg' className='zero-auto'>Submit</Button></Row>
                     </Container>
                     
                 </div>

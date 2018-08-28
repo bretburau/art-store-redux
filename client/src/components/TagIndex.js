@@ -19,6 +19,7 @@ class TagIndex extends React.Component {
             return(
                 <div>
                     <TopNav />
+                    <h3 className='text-center mt-sm-5 mb-sm-3'>All Tags:</h3>
                     <TagList tags={this.props.tags.tags}/>
                 </div>
             )

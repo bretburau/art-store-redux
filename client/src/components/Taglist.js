@@ -6,7 +6,7 @@ const TagList = (props) => {
         return <Tag tag={tag} key={tag.id} />
     }) 
     return (
-        <div>{tagList}</div>
+        <ul className='clean-ul text-center'>{tagList}</ul>
     )
 }
 
