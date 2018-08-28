@@ -10,27 +10,12 @@ import {
  } from 'reactstrap';
 
 
-    export default class TopNav extends React.Component {
-        constructor(props) {
-          super(props);
-      
-          this.toggle = this.toggle.bind(this);
-          this.state = {
-            isOpen: false
-          };
-        }
-        toggle() {
-          this.setState({
-            isOpen: !this.state.isOpen
-          });
-        }
-        render() {
-          return (
+    const TopNav = () => {
+        return (
             <div>
               <Navbar color="success" dark expand="md">
                 <NavbarBrand href="/">Image Organizer</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
-                <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
                       <NavLink href="/upload/">Upload</NavLink>
@@ -39,9 +24,9 @@ import {
                       <NavLink href="/tags">Tags</NavLink>
                     </NavItem>
                   </Nav>
-                </Collapse>
               </Navbar>
             </div>
-          );
-        }
-      }
+        );
+    }
+
+    export default TopNav;

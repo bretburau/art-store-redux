@@ -102,11 +102,11 @@
                     <TopNav />
                     <Container>
                         <br />  
-                        <h3 style={{'text-align': 'center'}}>Upload a new image</h3>
+                        <h3 className='mb-sm-4' style={{textAlign: 'center'}}>Upload a new image</h3>
                         <Row>
                             <Col className='col-sm-3'>
                                 <Dropzone onDrop={this.handleDrop.bind(this)}>
-                                    <p>Click or drag to upload an image!</p>
+                                    <p>Click or drag to add an image!</p>
                                 </Dropzone>
                             </Col>
                             <Col className='col-sm-9'>
@@ -114,8 +114,7 @@
                                     <Container>
                                         <Row>
                                             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                                                <Label for="title" className="mr-sm-2">Title</Label>
-                                                <Input type='text' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
+                                                <Input type='text' placeholder='title' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
                                             </FormGroup>
                                         </Row>
                                         <Row className='mt-sm-3'>
@@ -124,11 +123,17 @@
                                                 {tagCheckboxList}
                                             </FormGroup>
                                         </Row>
+                                        <Row className='mt-sm-3'>
+                                            <FormGroup inline>
+                                                <Input type='text' placeholder='Add a new Tag' name='newTag' />
+                                                <Button>Add</Button>
+                                            </FormGroup>
+                                        </Row>
                                     </Container>
+                                    <Button className='zero-auto'>Submit</Button>
                                 </Form>
                             </Col>
                         </Row>
-                        <Row className='mt-sm-5 text-center'><Button size='lg' className='zero-auto'>Submit</Button></Row>
                     </Container>
                     
                 </div>
