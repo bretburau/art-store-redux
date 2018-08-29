@@ -86,9 +86,6 @@
         } 
 
         render() {
-            const dropzoneStyle={
-                margin: "0 auto"
-            }
             const tagCheckboxList = this.props.tags.tags.map((tag, i) => { //TODO more weird nesting?!
                 return <Checkbox name='checkboxes'
                 tag={tag} 

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { Card, CardText, CardBody,
-    CardTitle, CardSubtitle, Button, Col } from 'reactstrap';
+    CardTitle, CardSubtitle, Col } from 'reactstrap';
 
 const Piece = (props) => {
     return(

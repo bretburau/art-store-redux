@@ -5,8 +5,6 @@ import * as actions from './actions/pieceActions';
 import { bindActionCreators } from 'redux'
 import PieceList from './components/Piecelist';
 import TopNav from './components/TopNav'
-import { Container } from 'reactstrap'
-
 export class App extends Component {
 
   componentDidMount() {
