@@ -111,7 +111,7 @@
                                     <Container>
                                         <Row>
                                             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
-                                                <Input type='text' placeholder='title' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
+                                                <Input type='text' placeholder='Title' name='title' id='title' value={this.state.title} onChange={this.handleTextChange} />
                                             </FormGroup>
                                         </Row>
                                         <Row className='mt-sm-3'>
