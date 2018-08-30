@@ -7,11 +7,13 @@ A simple app built with Ruby on Rails and React.js for uploading, categorizing, 
 To install, clone this repo, install dependancies, and migrate the database.
 
 ```bundle install
-rake db: migrate```
+rake db: migrate
+```
 
 Start both the frontend and backend servers:
 
-```rake start```
+```rake start
+```
 
 ##Usage
 
