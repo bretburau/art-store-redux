@@ -1,24 +1,30 @@
-# README
+# Image Database
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple app built with Ruby on Rails and React.js for uploading, categorizing, and viewing images.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+To install, clone this repo, install dependancies, and migrate the database.
 
-* System dependencies
+```bundle install
+rake db: migrate```
 
-* Configuration
+Start both the frontend and backend servers:
 
-* Database creation
+```rake start```
 
-* Database initialization
+##Usage
 
-* How to run the test suite
+Navigate your browser to localhost:3000. The homepage displays all of the currently uploaded images. The link on each card will take you to the display page for said image for more details. 
 
-* Services (job queues, cache servers, search engines, etc.)
+The upload link in the navigation bar will take you to an image upload page. Here you can drag a file to the box or click on the box to select what file to upload. In the form on the right, input information about the image, and select any category tags you'd like associated with the image. Submitting this will take you to the image display page.
 
-* Deployment instructions
+The 'tags' link will show all the available tags. Clicking on any of them will display all images under that category.
 
-* ...
+##Contributing 
+
+Bug reports and pull requests are welcome on Github at https://github.com/bretburau/art-store-redux
+
+##License
+
+The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

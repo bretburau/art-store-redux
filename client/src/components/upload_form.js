@@ -120,14 +120,14 @@
                                                 {tagCheckboxList}
                                             </FormGroup>
                                         </Row>
-                                        <Row className='mt-sm-3'>
+                                        {/* <Row className='mt-sm-3'>
                                             <FormGroup inline>
                                                 <Input type='text' placeholder='Add a new Tag' name='newTag' />
                                                 <Button>Add</Button>
                                             </FormGroup>
-                                        </Row>
+                                        </Row> */}
                                     </Container>
-                                    <Button className='zero-auto'>Submit</Button>
+                                    <Button className='zero-auto mt-sm-5'>Submit</Button>
                                 </Form>
                             </Col>
                         </Row>
