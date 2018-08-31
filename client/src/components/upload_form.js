@@ -3,7 +3,8 @@
     // import { ConnectedApp } from '../App';
     import { connect } from 'react-redux'
     import { bindActionCreators } from 'redux';
-    import * as actions from '../actions/tagActions';
+    import * as tagActions from '../actions/tagActions';
+    import * as pieceActions from '../actions/pieceActions';
     import Checkbox from '../components/Checkbox'
     import TopNav from './TopNav';
     import { Container, Button, Form, FormGroup, Label, Input, Row, Col } from 'reactstrap'
@@ -53,8 +54,13 @@
                 formPayload.append('uploaded_image', this.state.file);
                 formPayload.append('name', this.state.title) //TODO best way to do this?
                 formPayload.append('tagIds', tagIds)
-                this.sendImageToController(formPayload);
+                // this.sendImageToController(formPayload);
+                this.saveImageToState(formPayload)
             }
+        }
+        
+        saveImageToState = (formPayload) => {
+            this.props.actions.addPiece(formPayload)
         }
 
         sendImageToController = (formPayload) => {
@@ -69,8 +75,6 @@
             .then(imageFromController => {
                 //   this.setState({uploads: this.state.uploads.concat(imageFromController)}) // <---NOT NECESSARY?  
                 // this.setState({uploads: imageFromController}) 
-                console.log(imageFromController)    
-                this.props.history.push(`/pieces/${imageFromController.id}`)     
             })
             // console.log(this.state)
             // this.props.history.push('/') // re-routes to home page, TODO send to piece show page
@@ -82,7 +86,6 @@
             } else {
             this.selectedCheckboxes.add(label);
             }
-            console.log(this.selectedCheckboxes)
         } 
 
         render() {
@@ -144,7 +147,7 @@
     })
 
     const mapDispatchToProps = dispatch => ({
-        actions: bindActionCreators(actions, dispatch)
+        actions: bindActionCreators({...tagActions, ...pieceActions}, dispatch)
     })
 
 
