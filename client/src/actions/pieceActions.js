@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import { createBrowserHistory as browserHistory} from 'history'
 
 export function fetchPieces() {
     return(dispatch) => {
@@ -22,7 +23,6 @@ export function addPiece(formPayload) {
             .then(imageFromController => {
                 dispatch({type: "ADD_PIECE", payload: imageFromController}) 
                 console.log('uploaded:', imageFromController)
-                this.props.history.push(`/pieces/${imageFromController.id}`)     
             })
     }
 }
