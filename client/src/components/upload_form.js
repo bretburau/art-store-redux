@@ -64,7 +64,7 @@
         
         saveImageToState = (formPayload) => {
             this.props.actions.addPiece(formPayload)
-                .then(this.props.history.push(`/pieces/${this.props.pieces.pieces[this.props.pieces.pieces.length - 1].id}`)) //ugly, returns most recently added piece
+                .then(this.props.history.push(`/`))
         }
 
         sendImageToController = (formPayload) => {

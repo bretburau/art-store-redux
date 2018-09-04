@@ -1,5 +1,4 @@
 import fetch from 'isomorphic-fetch'
-import { createBrowserHistory as browserHistory} from 'history'
 
 export function fetchPieces() {
     return(dispatch) => {
