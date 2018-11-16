@@ -55,7 +55,7 @@ gem "rack", ">= 2.0.6"
 gem "loofah", ">= 2.2.3"
 
 
-"dependencies": {
-  "merge": ">=1.2.1"
-  "url-parse": ">=1.4.3"
-}
+# "dependencies": {
+#   "merge": ">=1.2.1",
+#   "url-parse": ">=1.4.3"
+# }
