@@ -4,6 +4,7 @@ import { Card, CardText, CardBody,
     CardTitle, CardSubtitle, Col } from 'reactstrap';
 
 const Piece = (props) => {
+    console.log(props)
     return(
         <Col md="3">
             <Card className='text-center'>
